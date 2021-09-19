@@ -1,0 +1,36 @@
+
+.ArticleSmall {
+    background-color: transparent;
+    border: 1px solid #4a4e54;
+    border-radius: 0px;
+}
+
+.ArticleSmall-link {
+    color: inherit;
+}
+
+.ArticleSmall-link:hover {
+    color: #009fe3 !important;
+    text-decoration: none;
+}
+
+.ArticleSmall:hover {
+    background-color: rgba(0, 159, 227, 0.1);
+}
+
+.ArticleSmall-name {
+    display:inline-block;
+    width: calc(100% - 14px);
+    padding-left: 7px;
+    padding-top: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.ArticleSmall i {
+    display:inline;
+    font-size: 14px;
+    line-height: 1.2;
+}

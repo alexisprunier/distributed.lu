@@ -1,0 +1,61 @@
+
+.Company {
+    margin: 5px 0px !important;
+    background-color: transparent;
+    border: 1px solid #4a4e54;
+    border-radius: 0px;
+    height: 100px;
+}
+
+.Company-link {
+    color: inherit;
+}
+
+.Company-link:hover {
+    color: #009fe3 !important;
+    text-decoration: none;
+}
+
+.Company:hover {
+    background-color: rgba(0, 159, 227, 0.1);
+}
+
+.Company .card-horizontal {
+    height: 100%;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.Company .img-square-wrapper {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    flex: 0 0 140px;
+}
+
+.Company .img-square-wrapper-white {
+    background-color: white;
+}
+
+.Company .img-square-wrapper img {
+    object-fit: contain;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.Company .card-body {
+    padding: .9rem 1.25rem !important;
+    border-left: 1px solid rgba(0,0,0,.125);
+}
+
+.Company .card-body h5 {
+	max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

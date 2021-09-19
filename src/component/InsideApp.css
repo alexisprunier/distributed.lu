@@ -1,0 +1,14 @@
+
+#InsideApp {
+    width: 100%;
+    height: 100%;
+}
+
+#InsideApp-content {
+    float: right;
+    width: calc(100% - 62px);
+    height: 100%;
+    /* background-image: linear-gradient(to left, #26282b 95%, #EF3340); */
+    background-color: #26282b;
+    overflow-y: auto;
+}

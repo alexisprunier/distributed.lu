@@ -1,0 +1,41 @@
+
+.rbc-calendar {
+	background-color: transparent !important;
+}
+
+.rbc-event {
+	background-color: #009fe3 !important;
+	border-radius: 0 !important;
+}
+
+.rbc-event:hover {
+	background-color: rgba(0, 159, 227, 0.8) !important;
+}
+
+.rbc-day-bg + .rbc-day-bg {
+    border-left: 1px solid dimgrey !important;
+}
+
+.rbc-off-range-bg {
+    background: #4a4e54 !important;
+}
+
+.rbc-today {
+	background-color: rgba(0, 159, 227, 0.1) !important;
+}
+
+.rbc-btn-group > button {
+	border-radius: 0 !important;
+	color: white !important;
+	font-weight:300 !important;
+	text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35) !important;
+	text-align:center !important;
+	transition: all 0.2s !important;
+	background-color: #009fe3 !important;
+	opacity: .5 !important;
+}
+
+.rbc-btn-group > button:hover {
+	border-color: rgba(0,0,0,1) !important;
+	opacity: 1 !important;;
+}

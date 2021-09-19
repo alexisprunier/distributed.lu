@@ -1,0 +1,59 @@
+
+.Event {
+    margin: 5px 0px !important;
+    background-color: transparent;
+    border: 1px solid #4a4e54;
+    border-radius: 0px;
+}
+
+.Event-link {
+    color: inherit;
+}
+
+.Event-link:hover {
+    color: #009fe3 !important;
+    text-decoration: none;
+}
+
+.Event:hover {
+    background-color: rgba(0, 159, 227, 0.1);
+}
+
+.Event .card-img-wrapper {
+    position: relative;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    margin: auto;
+}
+
+.Event .card-img-wrapper img {
+    object-fit: cover;
+}
+
+.Event .card-title {
+    line-height: 1.2;
+}
+
+.Event .card-date {
+    position: absolute;
+    background: #009fe3;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    bottom: 0;
+    right: 10px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.Event .card-type {
+    position: absolute;
+    background: #e40613;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    top: 0;
+    left: 10px;
+    text-transform: uppercase;
+}
