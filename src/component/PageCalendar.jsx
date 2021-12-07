@@ -26,7 +26,6 @@ export default class PageCalendar extends React.Component {
 			articles: null,
 			loading: false,
 			filters: {
-				media: "CYBERLUX",
 				type: "EVENT",
 				taxonomy_values: [],
 				title: null,
@@ -90,10 +89,10 @@ export default class PageCalendar extends React.Component {
 					<div className="col-md-12">
 						<h1>Calendar</h1>
 					</div>
-					{this.state.articles !== null && !this.state.loading
+					{this.state.articles
 						? <div className="col-md-12">
 							<Calendar
-								events={this.state.articles.map((e) => (
+								events={this.state.articles.items.map((e) => (
 									{
 										title: e.title,
 										start: new Date(e.start_date),
@@ -127,8 +126,8 @@ export default class PageCalendar extends React.Component {
 					</div>
 				</div>
 
-				{this.state.articles !== null && !this.state.loading
-					&& this.state.articles.filter((a) => new Date(a.end_date) > new Date()).length === 0
+				{this.state.articles
+					&& this.state.articles.items.filter((a) => new Date(a.end_date) > new Date()).length === 0
 					&& <div className="row">
 						<div className="col-md-12">
 							<Message
@@ -139,11 +138,11 @@ export default class PageCalendar extends React.Component {
 					</div>
 				}
 
-				{this.state.articles !== null && !this.state.loading
-					&& this.state.articles.filter((a) => new Date(a.end_date) > new Date()).length > 0
+				{this.state.articles
+					&& this.state.articles.items.filter((a) => new Date(a.end_date) > new Date()).length > 0
 					&& <Table
 						numberDisplayed={6}
-						elements={this.state.articles
+						elements={this.state.articles.items
 							.filter((a) => new Date(a.end_date) > new Date())
 							.sort((a, b) => (a.start_date > b.start_date ? 1 : -1))
 							.map((a, i) => [a, i])
@@ -158,7 +157,7 @@ export default class PageCalendar extends React.Component {
 					/>
 				}
 
-				{(this.state.articles === null || this.state.loading)
+				{!this.state.articles
 					&& <div className="row">
 						<div className="col-md-12">
 							<Loading
@@ -174,8 +173,8 @@ export default class PageCalendar extends React.Component {
 					</div>
 				</div>
 
-				{this.state.articles !== null && !this.state.loading
-					&& this.state.articles.filter((a) => new Date(a.end_date) < new Date()).length === 0
+				{this.state.articles
+					&& this.state.articles.items.filter((a) => new Date(a.end_date) < new Date()).length === 0
 					&& <div className="row">
 						<div className="col-md-12">
 							<Message
@@ -186,11 +185,11 @@ export default class PageCalendar extends React.Component {
 					</div>
 				}
 
-				{this.state.articles !== null && !this.state.loading
-					&& this.state.articles.filter((a) => new Date(a.end_date) < new Date()).length > 0
+				{this.state.articles
+					&& this.state.articles.items.filter((a) => new Date(a.end_date) < new Date()).length > 0
 					&& <Table
 						numberDisplayed={6}
-						elements={this.state.articles
+						elements={this.state.articles.items
 							.filter((a) => new Date(a.end_date) < new Date())
 							.sort((a, b) => a.start_date - b.start_date)
 							.map((a, i) => [a, i])
@@ -205,7 +204,7 @@ export default class PageCalendar extends React.Component {
 					/>
 				}
 
-				{(this.state.articles === null || this.state.loading)
+				{!this.state.articles
 					&& <div className="row">
 						<div className="col-md-12">
 							<Loading
