@@ -7,12 +7,14 @@ import Message from "./box/Message.jsx";
 import Article from "./item/Article.jsx";
 import Event from "./item/Event.jsx";
 import { getRequest } from "../utils/request.jsx";
+import { dictToURI } from "../utils/url.jsx";
 
 export default class PageHome extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.getArticles = this.getArticles.bind(this);
+		this.getNews = this.getNews.bind(this);
+		this.getEvents = this.getEvents.bind(this);
 
 		this.state = {
 			news: null,
@@ -21,27 +23,36 @@ export default class PageHome extends React.Component {
 	}
 
 	componentDidMount() {
-		this.getArticles();
+		this.getNews();
+		this.getEvents();
 	}
 
-	getArticles() {
-		this.setState({
-			events: null,
-			news: null,
+	getNews() {
+		const params = dictToURI({
+			per_page: 2,
+			type: "NEWS",
 		});
 
-		getRequest.call(this, "public/get_public_articles", (data) => {
+		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
-				events: data
-					.filter((d) => d.type === "EVENT")
-					.filter((d) => d.end_date !== null && d.start_date !== null)
-					.filter((d) => d.end_date > new Date().toISOString())
-					.sort((a, b) => (b.start_date > a.start_date ? -1 : 1))
-					.slice(0, 3),
-				news: data
-					.filter((d) => d.type === "NEWS")
-					.sort((a, b) => (b.publication_date > a.publication_date ? 1 : -1))
-					.slice(0, 2),
+				news: data,
+			});
+		}, (response) => {
+			nm.warning(response.statusText);
+		}, (error) => {
+			nm.error(error.message);
+		});
+	}
+
+	getEvents() {
+		const params = dictToURI({
+			per_page: 2,
+			type: "EVENT",
+		});
+
+		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
+			this.setState({
+				events: data,
 			});
 		}, (response) => {
 			nm.warning(response.statusText);
@@ -79,8 +90,8 @@ export default class PageHome extends React.Component {
 						<h1>Read the latest articles</h1>
 					</div>
 
-					{Array.isArray(this.state.news)
-						&& this.state.news.length === 0
+					{this.state.news
+						&& this.state.news.items.length === 0
 						&& <div className="col-md-12">
 							<Message
 								text="No news found"
@@ -88,10 +99,9 @@ export default class PageHome extends React.Component {
 						</div>
 					}
 
-					{Array.isArray(this.state.news)
-						&& this.state.news.length > 0
-						&& this.state.news
-							.filter((_, i) => i < 2)
+					{this.state.news
+						&& this.state.news.items.length > 0
+						&& this.state.news.items
 							.map((n) => <div
 								key={n.id}
 								className="col-md-5">
@@ -101,8 +111,8 @@ export default class PageHome extends React.Component {
 							</div>)
 					}
 
-					{Array.isArray(this.state.news)
-						&& this.state.news.length > 0
+					{this.state.news
+						&& this.state.news.items.length > 0
 						&& <div
 							key={"more"}
 							className="col-md-2">
@@ -114,7 +124,7 @@ export default class PageHome extends React.Component {
 						</div>
 					}
 
-					{!Array.isArray(this.state.news)
+					{!this.state.news
 						&& <Loading
 							height={200}
 						/>
@@ -126,8 +136,8 @@ export default class PageHome extends React.Component {
 						<h1>Prepare for the coming events</h1>
 					</div>
 
-					{Array.isArray(this.state.events)
-						&& this.state.events.length === 0
+					{this.state.events
+						&& this.state.events.items.length === 0
 						&& <div className="col-md-12">
 							<Message
 								text="No event found"
@@ -135,10 +145,9 @@ export default class PageHome extends React.Component {
 						</div>
 					}
 
-					{Array.isArray(this.state.events)
-						&& this.state.events.length > 0
-						&& this.state.events
-							.filter((_, i) => i < 2)
+					{this.state.events
+						&& this.state.events.items.length > 0
+						&& this.state.events.items
 							.map((e) => <div
 								key={e.id}
 								className="col-md-5">
@@ -161,7 +170,7 @@ export default class PageHome extends React.Component {
 						</div>
 					}
 
-					{!Array.isArray(this.state.events)
+					{!this.state.events
 						&& <Loading
 							height={200}
 						/>

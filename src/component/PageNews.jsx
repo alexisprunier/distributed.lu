@@ -16,10 +16,12 @@ export default class PageNews extends React.Component {
 		super(props);
 
 		this.getArticles = this.getArticles.bind(this);
+		this.getFastLinks = this.getFastLinks.bind(this);
 		this.modifyFilters = this.modifyFilters.bind(this);
 
 		this.state = {
 			page: 1,
+			fastLinkArticles: null,
 			articles: null,
 			filters: {
 				media: "ALL",
@@ -32,24 +34,49 @@ export default class PageNews extends React.Component {
 
 	componentDidMount() {
 		this.getArticles();
+		this.getFastLinks();
 	}
 
-	getArticles() {
+	getFastLinks(page) {
+		this.setState({
+			fastLinkArticles: null,
+		});
+
+		const params = dictToURI({
+			...this.state.filters,
+			per_page: 5,
+			page: page || 1,
+		});
+
+		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
+			this.setState({
+				fastLinkArticles: data,
+			});
+		}, (response) => {
+			nm.warning(response.statusText);
+		}, (error) => {
+			nm.error(error.message);
+		});
+	}
+
+	getArticles(page) {
 		this.setState({
 			articles: null,
 		});
 
-		const params = dictToURI(this.state.filters);
+		const params = dictToURI({
+			...this.state.filters,
+			per_page: 10,
+			page: page || 1,
+		});
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
-				articles: data.sort((a, b) => (b.publication_date > a.publication_date ? 1 : -1)),
+				articles: data,
 			});
 		}, (response) => {
-			this.setState({ loading: false });
 			nm.warning(response.statusText);
 		}, (error) => {
-			this.setState({ loading: false });
 			nm.error(error.message);
 		});
 	}
@@ -82,7 +109,7 @@ export default class PageNews extends React.Component {
 					</div>
 				</div>
 
-				{this.state.articles !== null && this.state.articles.length === 0
+				{this.state.fastLinkArticles && this.state.fastLinkArticles.pagination.total === 0
 					&& <div className="row row-spaced">
 						<div className="col-md-12">
 							<Message
@@ -93,10 +120,10 @@ export default class PageNews extends React.Component {
 					</div>
 				}
 
-				{this.state.articles !== null && this.state.articles.length > 0
+				{this.state.fastLinkArticles && this.state.fastLinkArticles.pagination.total > 0
 					&& <div className="row row-spaced">
 						<div className="col-md-12">
-							{this.state.articles.filter((_, i) => i < 5).map((a) => <ArticleSmall
+							{this.state.fastLinkArticles.items.map((a) => <ArticleSmall
 								key={a.id}
 								info={a}
 							/>)
@@ -105,7 +132,7 @@ export default class PageNews extends React.Component {
 					</div>
 				}
 
-				{this.state.articles === null
+				{!this.state.fastLinkArticles
 					&& <div className="row row-spaced">
 						<div className="col-md-12">
 							<Loading
@@ -121,7 +148,7 @@ export default class PageNews extends React.Component {
 					</div>
 				</div>
 
-				{this.state.articles !== null && this.state.articles.length === 0
+				{this.state.articles && this.state.articles.pagination.total === 0
 					&& <div className="row row-spaced">
 						<div className="col-md-12">
 							<Message
@@ -132,10 +159,10 @@ export default class PageNews extends React.Component {
 					</div>
 				}
 
-				{this.state.articles !== null && this.state.articles.length > 0
+				{this.state.articles && this.state.articles.pagination.total > 0
 					&& <Table
 						className={""}
-						elements={this.state.articles.map((a, i) => [a, i])}
+						elements={this.state.articles.items.map((a, i) => [a, i])}
 						buildElement={(a) => (
 							<div className="col-md-4">
 								<Article
@@ -146,7 +173,7 @@ export default class PageNews extends React.Component {
 					/>
 				}
 
-				{this.state.articles === null
+				{!this.state.articles
 					&& <div className="row row-spaced">
 						<div className="col-md-12">
 							<Loading

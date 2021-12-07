@@ -21,7 +21,7 @@ export default class Company extends Component {
 							? <div className="img-square-wrapper img-square-wrapper-white">
 								<img
 									className="card-img-top"
-									src={getApiURL() + "public/get_image/" + this.props.info.image}
+									src={getApiURL() + "public/get_public_image/" + this.props.info.image}
 									alt="Card image cap"/>
 							</div>
 							: <div className="img-square-wrapper">
