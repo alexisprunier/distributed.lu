@@ -33,7 +33,6 @@ export default class Menu extends React.Component {
 		return (
 			<SideNav
 				onSelect={(selected) => {
-					console.log(selected);
 					if (selected === "disconnect") {
 						this.props.cookies.remove("access_token_cookie");
 						window.location.replace("/");

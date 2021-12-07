@@ -65,8 +65,6 @@ export default class PageNetwork extends React.Component {
 		let value = this.props.taxonomy.taxonomy_values
 			.filter((v) => v.category === "ECOSYSTEM ROLE" && v.name === roleName);
 
-		console.log(value);
-
 		if (value.length === 0) {
 			return [];
 		}

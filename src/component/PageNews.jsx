@@ -69,8 +69,6 @@ export default class PageNews extends React.Component {
 			...this.state.filters,
 		});
 
-		console.log(params);
-
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
 				articles: data,
