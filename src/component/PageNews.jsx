@@ -9,7 +9,7 @@ import Article from "./item/Article.jsx";
 import ArticleSmall from "./item/ArticleSmall.jsx";
 import Message from "./box/Message.jsx";
 import { dictToURI } from "../utils/url.jsx";
-import Table from "./table/Table.jsx";
+import DynamicTable from "./table/DynamicTable.jsx";
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -24,7 +24,6 @@ export default class PageNews extends React.Component {
 			fastLinkArticles: null,
 			articles: null,
 			filters: {
-				media: "ALL",
 				type: "NEWS",
 				taxonomy_values: [],
 				title: null,
@@ -37,7 +36,7 @@ export default class PageNews extends React.Component {
 		this.getFastLinks();
 	}
 
-	getFastLinks(page) {
+	getFastLinks() {
 		this.setState({
 			fastLinkArticles: null,
 		});
@@ -45,7 +44,7 @@ export default class PageNews extends React.Component {
 		const params = dictToURI({
 			...this.state.filters,
 			per_page: 5,
-			page: page || 1,
+			page: 1,
 		});
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
@@ -65,10 +64,12 @@ export default class PageNews extends React.Component {
 		});
 
 		const params = dictToURI({
-			...this.state.filters,
-			per_page: 10,
+			per_page: 15,
 			page: page || 1,
+			...this.state.filters,
 		});
+
+		console.log(params);
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
@@ -160,16 +161,16 @@ export default class PageNews extends React.Component {
 				}
 
 				{this.state.articles && this.state.articles.pagination.total > 0
-					&& <Table
-						className={""}
-						elements={this.state.articles.items.map((a, i) => [a, i])}
-						buildElement={(a) => (
-							<div className="col-md-4">
-								<Article
-									info={a}
-								/>
-							</div>
-						)}
+					&& <DynamicTable
+						items={this.state.articles.items}
+						pagination={this.state.articles.pagination}
+						changePage={(page) => this.getArticles(page)}
+						buildElement={(a) => <div className="col-md-4">
+							<Article
+								info={a}
+							/>
+						</div>
+						}
 					/>
 				}
 

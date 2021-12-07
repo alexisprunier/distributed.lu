@@ -20,6 +20,7 @@ export function dictToURI(dict) {
 		Object.keys(dict).forEach((key) => {
 			if (typeof dict[key] === "boolean" && dict[key]) args += key + "=" + dict[key] + "&";
 			if (typeof dict[key] === "string" && dict[key].length > 0) args += key + "=" + dict[key] + "&";
+			if (Number.isInteger(dict[key])) args += key + "=" + dict[key] + "&";
 			if (Array.isArray(dict[key]) && dict[key].length > 0) args += key + "=" + dict[key].join(",") + "&";
 		});
 	}
