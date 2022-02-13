@@ -95,7 +95,7 @@ export default class PageArticle extends React.Component {
 							<article>
 								<div className='PageArticle-content-cover'>
 									{this.state.article.image !== null
-										? <img src={getApiURL() + "public/get_image/" + this.state.article.image}/>
+										? <img src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>
 										: ""}
 									<div className='PageArticle-publication-date'>
 										{this.state.article.publication_date}
@@ -208,7 +208,7 @@ export default class PageArticle extends React.Component {
 											{this.state.relatedArticles !== null && !this.state.relatedArticleLoading
 												&& this.state.relatedArticles.length === 0
 												&& <Message
-													text={"No related article found"}
+													text={"No related article found :("}
 													height={150}
 												/>
 											}

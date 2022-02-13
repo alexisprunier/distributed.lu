@@ -23,7 +23,7 @@
 	text-align: center;
     margin: 5px 0px !important;
     background-color: transparent;
-    border: 1px solid dimgrey;
+    border: 1px solid #4a4e54;
     border-radius: 0px;
     text-decoration: none !important;
     display: flex;
@@ -31,6 +31,10 @@
     align-content: center;
     flex-direction: column;
     color: #ccc !important;
+}
+
+.PageHome-see-more:hover {
+    background-color: rgba(0, 159, 227, 0.1);
 }
 
 .PageHome-see-more:hover {

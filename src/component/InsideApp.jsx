@@ -11,6 +11,7 @@ import PageContact from "./PageContact.jsx";
 import PageArticle from "./PageArticle.jsx";
 import PageEvent from "./PageEvent.jsx";
 import PageCompany from "./PageCompany.jsx";
+import PageSearch from "./PageSearch.jsx";
 import { getRequest } from "../utils/request.jsx";
 
 export default class InsideApp extends React.Component {
@@ -78,7 +79,8 @@ export default class InsideApp extends React.Component {
 							taxonomy={this.state.taxonomy}
 							{...props} />}
 						/>
-						<Route path="/contact" render={(props) => <PageContact{...props} />}/>
+						<Route path="/contact" render={(props) => <PageContact {...props} />}/>
+						<Route path="/search" render={(props) => <PageSearch {...props} />}/>
 						<Route path="/" render={(props) => <PageHome {...props} />}/>
 					</Switch>
 				</div>

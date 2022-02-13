@@ -85,44 +85,9 @@ export default class PageCalendar extends React.Component {
 					</div>
 				</div>
 
-				<div className="row row-spaced">
-					<div className="col-md-12">
-						<h1>Calendar</h1>
-					</div>
-					{this.state.articles
-						? <div className="col-md-12">
-							<Calendar
-								events={this.state.articles.items.map((e) => (
-									{
-										title: e.title,
-										start: new Date(e.start_date),
-										end: new Date(e.end_date),
-										handle: e.handle,
-									}
-								))}
-								step={60}
-								showMultiDayTimes
-								defaultDate={new Date()}
-								components={{
-									timeSlotWrapper: ColoredDateCellWrapper,
-								}}
-								localizer={localizer}
-								style={{
-									height: 700,
-									backgroundColor: "white",
-								}}
-								onSelectEvent={(event) => this.props.history.push("/calendar/" + event.handle)}
-							/>
-						</div>
-						: <Loading
-							height={200}
-						/>
-					}
-				</div>
-
 				<div className="row">
 					<div className="col-md-12">
-						<h1>Coming events</h1>
+						<h1>Calendar</h1>
 					</div>
 				</div>
 
@@ -131,7 +96,7 @@ export default class PageCalendar extends React.Component {
 					&& <div className="row">
 						<div className="col-md-12">
 							<Message
-								text={"No coming event found"}
+								text={"No coming event found :("}
 								height={200}
 							/>
 						</div>
@@ -167,52 +132,41 @@ export default class PageCalendar extends React.Component {
 					</div>
 				}
 
-				<div className="row">
+				<div className="row row-spaced">
 					<div className="col-md-12">
-						<h1>Past events</h1>
+						<h1>Calendar</h1>
 					</div>
+
+					{this.state.articles
+						? <div className="col-md-12">
+							<Calendar
+								events={this.state.articles.items.map((e) => (
+									{
+										title: e.title,
+										start: new Date(e.start_date),
+										end: new Date(e.end_date),
+										handle: e.handle,
+									}
+								))}
+								step={60}
+								showMultiDayTimes
+								defaultDate={new Date()}
+								components={{
+									timeSlotWrapper: ColoredDateCellWrapper,
+								}}
+								localizer={localizer}
+								style={{
+									height: 700,
+									backgroundColor: "white",
+								}}
+								onSelectEvent={(event) => this.props.history.push("/calendar/" + event.handle)}
+							/>
+						</div>
+						: <Loading
+							height={200}
+						/>
+					}
 				</div>
-
-				{this.state.articles
-					&& this.state.articles.items.filter((a) => new Date(a.end_date) < new Date()).length === 0
-					&& <div className="row">
-						<div className="col-md-12">
-							<Message
-								text={"No past event found"}
-								height={200}
-							/>
-						</div>
-					</div>
-				}
-
-				{this.state.articles
-					&& this.state.articles.items.filter((a) => new Date(a.end_date) < new Date()).length > 0
-					&& <Table
-						numberDisplayed={6}
-						elements={this.state.articles.items
-							.filter((a) => new Date(a.end_date) < new Date())
-							.sort((a, b) => a.start_date - b.start_date)
-							.map((a, i) => [a, i])
-						}
-						buildElement={(a) => (
-							<div className="col-md-4">
-								<Event
-									info={a}
-								/>
-							</div>
-						)}
-					/>
-				}
-
-				{!this.state.articles
-					&& <div className="row">
-						<div className="col-md-12">
-							<Loading
-								height={200}
-							/>
-						</div>
-					</div>
-				}
 			</div>
 		);
 	}

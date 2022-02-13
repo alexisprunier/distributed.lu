@@ -67,7 +67,7 @@ export default class PageCompany extends React.Component {
 										? "PageCompany-logo" : "PageCompany-no-logo")}>
 									{this.state.company.image !== null && this.state.company.image !== undefined
 										? <img
-											src={getApiURL() + "public/get_image/" + this.state.company.image}
+											src={getApiURL() + "public/get_public_image/" + this.state.company.image}
 											alt="Card image cap"
 										/>
 										: <NoImage/>

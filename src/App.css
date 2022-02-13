@@ -250,7 +250,6 @@ input, textarea, select {
   font-weight: inherit;
   line-height: var(--inputLineHeight);
   border: lightgrey 2px solid;
-  border-radius: 0.4rem;
   transition: box-shadow var(--transitionDuration);
   height: 40px;
 }

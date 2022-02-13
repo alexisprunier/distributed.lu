@@ -74,7 +74,7 @@ export default class PageEvent extends React.Component {
 							<article>
 								<div className='PageEvent-content-cover'>
 									{this.state.article.image !== null
-										? <img src={getApiURL() + "public/get_image/" + this.state.article.image}/>
+										? <img src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>
 										: ""}
 									{this.state.article.start_date !== null && this.state.article.end_date !== null
 										&& this.state.article.start_date !== undefined

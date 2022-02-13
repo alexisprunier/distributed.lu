@@ -83,6 +83,16 @@ export default class Menu extends React.Component {
 							<Link to="/network">Network</Link>
 						</NavText>
 					</NavItem>
+					<NavItem
+						eventKey="search"
+						active={this.props.selectedMenu === "search"}>
+						<NavIcon>
+							<Link to="/search"><i className="fas fa-search" style={{ fontSize: "1.75em" }}/></Link>
+						</NavIcon>
+						<NavText>
+							<Link to="/search">Search</Link>
+						</NavText>
+					</NavItem>
 
 					<NavItem
 						className="Menu-log-out-nav-item">

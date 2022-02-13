@@ -6,6 +6,7 @@ import Loading from "./box/Loading.jsx";
 import Message from "./box/Message.jsx";
 import Article from "./item/Article.jsx";
 import Event from "./item/Event.jsx";
+import SearchField from "./form/SearchField.jsx";
 import { getRequest } from "../utils/request.jsx";
 import { dictToURI } from "../utils/url.jsx";
 
@@ -81,7 +82,11 @@ export default class PageHome extends React.Component {
 						/>
 					</div>
 					<div className="col-md-7 PageHome-intro">
-						Welcome to the tabloid of the blockchain network in Luxembourg.
+						<div>Welcome to the tabloid of the blockchain network in Luxembourg</div>
+						<br/>
+						<SearchField
+							{...this.props}
+						/>
 					</div>
 				</div>
 
@@ -94,7 +99,7 @@ export default class PageHome extends React.Component {
 						&& this.state.news.items.length === 0
 						&& <div className="col-md-12">
 							<Message
-								text="No news found"
+								text="No news found :("
 							/>
 						</div>
 					}
@@ -140,7 +145,7 @@ export default class PageHome extends React.Component {
 						&& this.state.events.items.length === 0
 						&& <div className="col-md-12">
 							<Message
-								text="No event found"
+								text="No event found :("
 							/>
 						</div>
 					}

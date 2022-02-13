@@ -46,10 +46,8 @@ export default class Event extends Component {
 						<div className="card-title">{this.props.info.title}</div>
 						<p className="card-text">{this.props.info.abstract}</p>
 						<div className={"right-buttons"}>
-							<button
-								className={"blue-background"}
-							>
-								<i className="fas fa-arrow-alt-circle-right"/> More
+							<button className={"blue-background"}>
+								More
 							</button>
 							{this.props.info.link !== null
 								&& <button

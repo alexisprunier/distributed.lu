@@ -7,6 +7,7 @@
 
 .ArticleSmall-link {
     color: inherit;
+    width: 100%;
 }
 
 .ArticleSmall-link:hover {
