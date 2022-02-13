@@ -107,14 +107,14 @@ export default class PageSearch extends React.Component {
 					include_tags: "true",
 					type,
 					page,
-					per_page: 3,
+					per_page: 10,
 				}
 				: {
 					taxonomy_values: this.state.taxonomyValue,
 					include_tags: "true",
 					type,
 					page,
-					per_page: 3,
+					per_page: 10,
 				};
 
 			getRequest.call(this, "public/get_public_articles?"
@@ -337,17 +337,23 @@ export default class PageSearch extends React.Component {
 						<div className="col-md-12">
 							<h1>{this.state.EVENT !== null
 								? this.state.EVENT.pagination.total + " " : ""}event{this.state.EVENT.pagination.total > 1 ? "s" : ""}</h1>
-							<DynamicTable
-								items={this.state.EVENT.items}
-								pagination={this.state.EVENT.pagination}
-								changePage={(page) => this.getArticlesByType("EVENT", page)}
-								buildElement={(a) => (
-									<Event
-										info={a}
-										analytics={this.props.analytics}
-									/>
-								)}
-							/>
+						</div>
+						<div className="col-md-12">
+							<div className="row">
+								<DynamicTable
+									items={this.state.EVENT.items}
+									pagination={this.state.EVENT.pagination}
+									changePage={(page) => this.getArticlesByType("EVENT", page)}
+									buildElement={(a) => (
+										<div className="col-md-4">
+											<Event
+												info={a}
+												analytics={this.props.analytics}
+											/>
+										</div>
+									)}
+								/>
+							</div>
 						</div>
 					</div>
 				}
