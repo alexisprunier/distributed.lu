@@ -3,7 +3,7 @@
     background-color: transparent;
     border: 1px solid #4a4e54;
     border-radius: 0px;
-    height: 100%;
+    height: calc(100% - 10px);
 }
 
 .Article-link {
@@ -33,6 +33,12 @@
 
 .Article .card-title {
     line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 65px;
 }
 
 .Article .card-date {

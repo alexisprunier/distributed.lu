@@ -4,7 +4,7 @@
     background-color: transparent;
     border: 1px solid #4a4e54;
     border-radius: 0px;
-    height: 100px;
+    height: calc(100% - 10px);
 }
 
 .Company-link {
