@@ -95,7 +95,7 @@ export default class Menu extends React.Component {
 					</NavItem>
 
 					<NavItem
-						className="Menu-log-out-nav-item">
+						className="Menu-log-out-nav-item Menu-discord">
 						<NavIcon>
 							<a
 								href="https://discord.gg/xkBDmE6HQ8"
