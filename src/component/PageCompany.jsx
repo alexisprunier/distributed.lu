@@ -97,7 +97,7 @@ export default class PageCompany extends React.Component {
 						items={this.state[variable].items}
 						pagination={this.state[variable].pagination}
 						changePage={(page) => this.getCompanyArticle(type, variable, page)}
-						buildElement={(a) => <div className="col-md-6">
+						buildElement={(a) => <div className="col-md-4">
 							{type === "NEWS"
 								&& <Article
 									info={a}
@@ -313,6 +313,7 @@ export default class PageCompany extends React.Component {
 										))}
 
 										{this.props.taxonomy.taxonomy_values
+											.filter((v) => v.category === category)
 											.filter((v) => values.map((v2) => (v2.id)).indexOf(v.id) < 0)
 											.map((v) => (
 												<Chip
