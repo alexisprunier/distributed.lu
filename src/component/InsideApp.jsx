@@ -10,6 +10,7 @@ import PageNetwork from "./PageNetwork.jsx";
 import PageContact from "./PageContact.jsx";
 import PageArticle from "./PageArticle.jsx";
 import PageEvent from "./PageEvent.jsx";
+import PageLegal from "./PageLegal.jsx";
 import PageCompany from "./PageCompany.jsx";
 import PageSearch from "./PageSearch.jsx";
 import { getRequest } from "../utils/request.jsx";
@@ -76,6 +77,10 @@ export default class InsideApp extends React.Component {
 						<Route path="/news" render={(props) => <PageNews {...props} />}/>
 						<Route path="/calendar" render={(props) => <PageCalendar {...props} />}/>
 						<Route path="/network" render={(props) => <PageNetwork
+							taxonomy={this.state.taxonomy}
+							{...props} />}
+						/>
+						<Route path="/legal" render={(props) => <PageLegal
 							taxonomy={this.state.taxonomy}
 							{...props} />}
 						/>

@@ -84,6 +84,16 @@ export default class Menu extends React.Component {
 						</NavText>
 					</NavItem>
 					<NavItem
+						eventKey="legal"
+						active={this.props.selectedMenu === "legal"}>
+						<NavIcon>
+							<Link to="/legal"><i className="fas fa-balance-scale" style={{ fontSize: "1.75em" }}/></Link>
+						</NavIcon>
+						<NavText>
+							<Link to="/legal">Legal framework</Link>
+						</NavText>
+					</NavItem>
+					<NavItem
 						eventKey="search"
 						active={this.props.selectedMenu === "search"}>
 						<NavIcon>
