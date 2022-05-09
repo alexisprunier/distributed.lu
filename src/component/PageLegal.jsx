@@ -44,7 +44,8 @@ export default class PageLegal extends React.Component {
 			const params = dictToURI({
 				type: "TOOL",
 				taxonomy_values: this.props.taxonomy.taxonomy_values
-					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "EUROPEAN UNION LEGAL FRAMEWORK"),
+					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "EUROPEAN UNION LEGAL FRAMEWORK")
+					.map((v) => v.id),
 				per_page: 4,
 				page: page || 1,
 			});
@@ -66,11 +67,12 @@ export default class PageLegal extends React.Component {
 			this.setState({
 				nationalFrameworks: null,
 			});
-			console.log(this.props.taxonomy);
+
 			const params = dictToURI({
 				type: "TOOL",
 				taxonomy_values: this.props.taxonomy.taxonomy_values
-					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "NATIONAL LEGAL FRAMEWORK"),
+					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "NATIONAL LEGAL FRAMEWORK")
+					.map((v) => v.id),
 				per_page: 4,
 				page: page || 1,
 			});
@@ -96,7 +98,8 @@ export default class PageLegal extends React.Component {
 			const params = dictToURI({
 				type: "TOOL",
 				taxonomy_values: this.props.taxonomy.taxonomy_values
-					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "STANDARD"),
+					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "STANDARD")
+					.map((v) => v.id),
 				per_page: 4,
 				page: page || 1,
 			});
