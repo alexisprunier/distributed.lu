@@ -20,6 +20,7 @@
     "react-country-region-selector": "^3.0.1",
     "react-d3-tree": "^2.0.1",
     "react-dom": "^16.3.1",
+    "react-graph-vis": "^1.0.7",
     "react-grid-layout": "^1.2.0",
     "react-leaflet": "^3.2.2",
     "react-notifications": "^1.6.0",

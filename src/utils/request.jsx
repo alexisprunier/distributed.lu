@@ -4,11 +4,11 @@ export async function getRequest(url, callback, catchBadResponse, catchError) {
 	fetch(getApiURL() + url, {
 		method: "GET",
 		headers: new Headers({
+			Authorization: "Bearer " + window.token,
 			Accept: "application/json, text/html",
 			pragma: "no-cache",
 			"cache-control": "no-cache",
 		}),
-		credentials: "include",
 	}).then((response) => {
 		if (response.status === 200) {
 			return response.json();
@@ -22,7 +22,10 @@ export async function getRequest(url, callback, catchBadResponse, catchError) {
 		}
 		throw new Error("An error happened while requesting the server");
 	}).then((jsonBody) => {
-		if (typeof jsonBody !== "undefined") callback(jsonBody);
+		if (typeof jsonBody !== "undefined") {
+			return callback(jsonBody);
+		}
+		return null;
 	}).catch((error) => {
 		if (error.message !== "null") {
 			catchError(error);
@@ -34,11 +37,11 @@ export async function getBlobRequest(url, callback, catchBadResponse, catchError
 	fetch(getApiURL() + url, {
 		method: "GET",
 		headers: new Headers({
+			Authorization: "Bearer " + window.token,
 			Accept: "application/json, text/html",
 			pragma: "no-cache",
 			"cache-control": "no-cache",
 		}),
-		credentials: "include",
 	}).then((response) => {
 		if (response.status === 200) {
 			return response.blob();
@@ -65,10 +68,11 @@ export async function postRequest(url, params, callback, catchBadResponse, catch
 		method: "POST",
 		body: JSON.stringify(params),
 		headers: new Headers({
+			Authorization: "Bearer " + window.token,
 			Accept: "application/json, text/html",
 			"Content-Type": "application/json",
+			credentials: "include",
 		}),
-		credentials: "include",
 	}).then((response) => {
 		if (response.status === 200) {
 			return response.json();
