@@ -94,6 +94,16 @@ export default class Menu extends React.Component {
 						</NavText>
 					</NavItem>
 					<NavItem
+						eventKey="training"
+						active={this.props.selectedMenu === "training"}>
+						<NavIcon>
+							<Link to="/training"><i className="fas fa-graduation-cap" style={{ fontSize: "1.75em" }}/></Link>
+						</NavIcon>
+						<NavText>
+							<Link to="/training">Training</Link>
+						</NavText>
+					</NavItem>
+					<NavItem
 						eventKey="search"
 						active={this.props.selectedMenu === "search"}>
 						<NavIcon>
