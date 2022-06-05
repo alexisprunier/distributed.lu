@@ -9,6 +9,7 @@ import Event from "./item/Event.jsx";
 import SearchField from "./form/SearchField.jsx";
 import { getRequest } from "../utils/request.jsx";
 import { dictToURI } from "../utils/url.jsx";
+import { dateToString } from "../utils/date.jsx";
 
 export default class PageHome extends React.Component {
 	constructor(props) {
@@ -49,6 +50,8 @@ export default class PageHome extends React.Component {
 		const params = dictToURI({
 			per_page: 2,
 			type: "EVENT",
+			order_by: "start_date",
+			min_start_date: dateToString(new Date()),
 		});
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
