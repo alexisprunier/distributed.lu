@@ -2,8 +2,6 @@ import React from "react";
 import "./PageNetwork.css";
 import Graph from "react-graph-vis";
 import { NotificationManager as nm } from "react-notifications";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import { Link } from "react-router-dom";
 import { getRequest } from "../utils/request.jsx";
 import Loading from "./box/Loading.jsx";
 
@@ -139,26 +137,16 @@ export default class PageNetwork extends React.Component {
 				var { nodes, edges } = event;
 			} */
 		};
-		console.log(events);
 
 		return (
 			<div className={"PageNetwork page max-sized-page"}>
-				<div className="row">
-					<div className="col-md-12">
-						<Breadcrumb>
-							<Breadcrumb.Item><Link to="/">DISTRIBUTED.LU</Link></Breadcrumb.Item>
-							<Breadcrumb.Item><Link to="/network">NETWORK</Link></Breadcrumb.Item>
-						</Breadcrumb>
-					</div>
-				</div>
-
 				{this.state.companies && this.props.taxonomy
 					? <div className="row">
 						<div className={"col-md-12"}>
 							<Graph
 								graph={this.getGraphData()}
 								options={options}
-								/* events={events} */
+								events={events}
 							/>
 						</div>
 					</div>

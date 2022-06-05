@@ -46,6 +46,7 @@ export default class SearchField extends Component {
 					value={this.state.value}
 					onChange={(v) => this.onChange(v.target.value)}
 					onKeyDown={this.onKeyDown}
+					placeholder="Type your search here"
 				/>
 				<button
 					className={"small-button"}

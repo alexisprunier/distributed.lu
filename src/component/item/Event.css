@@ -2,7 +2,7 @@
 .Event {
     margin: 5px 0px !important;
     background-color: transparent;
-    border: 1px solid #4a4e54;
+    border: 2px solid #4a4e54;
     border-radius: 0px;
     height: calc(100% - 10px);
 }

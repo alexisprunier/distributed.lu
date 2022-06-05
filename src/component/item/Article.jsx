@@ -18,14 +18,14 @@ export default class Article extends Component {
 				<div className="Article card">
 					<div className="card-img-wrapper">
 						{this.props.info.image !== null && this.props.info.image !== undefined
-							? <img
+							&& <img
 								className="card-img-top"
 								src={getApiURL() + "public/get_public_image/" + this.props.info.image}
 								alt="Card image cap"/>
-							: <NoImage
-								height={250}
-							/>
 						}
+						<NoImage
+							height={250}
+						/>
 						<div className="card-date">{this.props.info.publication_date}</div>
 						<div className="card-type">{this.props.info.type}</div>
 					</div>

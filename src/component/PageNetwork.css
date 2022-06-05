@@ -1,5 +1,5 @@
 
-.vis-network, .vis-network canvas {
+.PageNetwork .vis-network, .PageNetwork .vis-network canvas {
 	position: fixed !important;
 	top: 0px !important;
 	left: 0px;
