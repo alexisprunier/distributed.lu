@@ -25,7 +25,7 @@ export default class PageSearch extends React.Component {
 		this.hasLoaded = this.hasLoaded.bind(this);
 
 		this.state = {
-			articleTypes: ["NEWS", "EVENT"],
+			articleTypes: ["NEWS", "EVENT", "TOOL", "SERVICE"],
 			searchValue: getUrlParameter("r") ? decodeURI(getUrlParameter("r")) : null,
 			taxonomyValue: getUrlParameter("taxonomy_value") ? getUrlParameter("taxonomy_value") : null,
 			entities: null,
@@ -279,7 +279,6 @@ export default class PageSearch extends React.Component {
 					&& this.state.NEWS && this.state.NEWS.items.length === 0
 					&& this.state.EVENT && this.state.EVENT.items.length === 0
 					&& this.state.TOOL && this.state.TOOL.items.length === 0
-					&& this.state.JOB_OFFER && this.state.JOB_OFFER.items.length === 0
 					&& this.state.SERVICE && this.state.SERVICE.items.length === 0
 					&& <div className="row">
 						<div className="col-md-12">
