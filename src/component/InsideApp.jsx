@@ -1,6 +1,6 @@
 import React from "react";
 import "./InsideApp.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import { NotificationManager as nm } from "react-notifications";
 import Menu from "./Menu.jsx";
 import PageHome from "./PageHome.jsx";
@@ -13,9 +13,10 @@ import PageEvent from "./PageEvent.jsx";
 import PageLegal from "./PageLegal.jsx";
 import PageCompany from "./PageCompany.jsx";
 import PageSearch from "./PageSearch.jsx";
+import PageTraining from "./PageTraining.jsx";
 import { getRequest } from "../utils/request.jsx";
 
-export default class InsideApp extends React.Component {
+class InsideApp extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -24,7 +25,25 @@ export default class InsideApp extends React.Component {
 		this.state = {
 			selectedMenu: "",
 			taxonomy: null,
+			unlisten: null,
 		};
+	}
+
+	// eslint-disable-next-line react/no-deprecated
+	componentWillMount() {
+		this.setState({
+			unlisten: this.props.history.listen((location) => {
+				// eslint-disable-next-line no-multi-assign,no-underscore-dangle
+				const paq = window._paq = window._paq || [];
+				paq.push(["setCustomUrl", location.pathname]);
+				paq.push(["setDocumentTitle", "My New Title"]);
+				paq.push(["trackPageView"]);
+			}),
+		});
+	}
+
+	componentWillUnmount() {
+		this.state.unlisten();
 	}
 
 	componentDidMount() {
@@ -84,6 +103,10 @@ export default class InsideApp extends React.Component {
 							taxonomy={this.state.taxonomy}
 							{...props} />}
 						/>
+						<Route path="/training" render={(props) => <PageTraining
+							taxonomy={this.state.taxonomy}
+							{...props} />}
+						/>
 						<Route path="/contact" render={(props) => <PageContact {...props} />}/>
 						<Route path="/search" render={(props) => <PageSearch {...props} />}/>
 						<Route path="/" render={(props) => <PageHome {...props} />}/>
@@ -93,3 +116,5 @@ export default class InsideApp extends React.Component {
 		);
 	}
 }
+
+export default withRouter(InsideApp);
