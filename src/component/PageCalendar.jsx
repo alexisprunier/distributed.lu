@@ -87,7 +87,7 @@ export default class PageCalendar extends React.Component {
 
 				<div className="row">
 					<div className="col-md-12">
-						<h1>Calendar</h1>
+						<h1>Coming events</h1>
 					</div>
 				</div>
 
