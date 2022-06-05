@@ -9,7 +9,6 @@ import Loading from "./box/Loading.jsx";
 import Message from "./box/Message.jsx";
 import Company from "./item/Company.jsx";
 import ArticleSmall from "./item/ArticleSmall.jsx";
-import Event from "./item/Event.jsx";
 import SearchField from "./form/SearchField.jsx";
 import Table from "./table/Table.jsx";
 import DynamicTable from "./table/DynamicTable.jsx";
@@ -190,7 +189,9 @@ export default class PageSearch extends React.Component {
 	hasLoaded() {
 		return this.state.entities !== null
 			&& this.state.NEWS !== null
-			&& this.state.EVENT !== null;
+			&& this.state.EVENT !== null
+			&& this.state.SERVICE !== null
+			&& this.state.TOOL !== null;
 	}
 
 	render() {
@@ -335,24 +336,61 @@ export default class PageSearch extends React.Component {
 					&& <div className="row">
 						<div className="col-md-12">
 							<h1>{this.state.EVENT !== null
-								? this.state.EVENT.pagination.total + " " : ""}event{this.state.EVENT.pagination.total > 1 ? "s" : ""}</h1>
+								? this.state.EVENT.pagination.total + " " : ""}EVENT{this.state.EVENT.pagination.total > 1 ? "s" : ""}</h1>
+
+							<DynamicTable
+								items={this.state.EVENT.items}
+								pagination={this.state.EVENT.pagination}
+								changePage={(page) => this.getArticlesByType("EVENT", page)}
+								buildElement={(a) => (
+									<ArticleSmall
+										info={a}
+										analytics={this.props.analytics}
+									/>
+								)}
+							/>
 						</div>
+					</div>
+				}
+
+				{this.state.TOOL && this.state.TOOL.items.length > 0
+					&& <div className="row">
 						<div className="col-md-12">
-							<div className="row">
-								<DynamicTable
-									items={this.state.EVENT.items}
-									pagination={this.state.EVENT.pagination}
-									changePage={(page) => this.getArticlesByType("EVENT", page)}
-									buildElement={(a) => (
-										<div className="col-md-4">
-											<Event
-												info={a}
-												analytics={this.props.analytics}
-											/>
-										</div>
-									)}
-								/>
-							</div>
+							<h1>{this.state.TOOL !== null
+								? this.state.TOOL.pagination.total + " " : ""}TOOL{this.state.TOOL.pagination.total > 1 ? "s" : ""}</h1>
+
+							<DynamicTable
+								items={this.state.TOOL.items}
+								pagination={this.state.TOOL.pagination}
+								changePage={(page) => this.getArticlesByType("TOOL", page)}
+								buildElement={(a) => (
+									<ArticleSmall
+										info={a}
+										analytics={this.props.analytics}
+									/>
+								)}
+							/>
+						</div>
+					</div>
+				}
+
+				{this.state.SERVICE && this.state.SERVICE.items.length > 0
+					&& <div className="row">
+						<div className="col-md-12">
+							<h1>{this.state.SERVICE !== null
+								? this.state.SERVICE.pagination.total + " " : ""}SERVICE{this.state.SERVICE.pagination.total > 1 ? "s" : ""}</h1>
+
+							<DynamicTable
+								items={this.state.SERVICE.items}
+								pagination={this.state.SERVICE.pagination}
+								changePage={(page) => this.getArticlesByType("SERVICE", page)}
+								buildElement={(a) => (
+									<ArticleSmall
+										info={a}
+										analytics={this.props.analytics}
+									/>
+								)}
+							/>
 						</div>
 					</div>
 				}
