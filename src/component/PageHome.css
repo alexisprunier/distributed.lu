@@ -23,7 +23,7 @@
 	text-align: center;
     margin: 5px 0px !important;
     background-color: transparent;
-    border: 1px solid #4a4e54;
+    border: 2px solid #4a4e54;
     border-radius: 0px;
     text-decoration: none !important;
     display: flex;
@@ -40,4 +40,20 @@
 .PageHome-see-more:hover {
     color: #009fe3 !important;
     text-decoration: none !important;
+}
+
+.PageHome-network {
+    position: relative;
+    border: 2px solid #4a4e54;
+}
+
+.PageHome-network:hover {
+    background-color: rgba(0, 159, 227, 0.1);
+}
+
+.PageHome-network-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
 }

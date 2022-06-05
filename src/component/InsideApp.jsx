@@ -109,7 +109,10 @@ class InsideApp extends React.Component {
 						/>
 						<Route path="/contact" render={(props) => <PageContact {...props} />}/>
 						<Route path="/search" render={(props) => <PageSearch {...props} />}/>
-						<Route path="/" render={(props) => <PageHome {...props} />}/>
+						<Route path="/" render={(props) => <PageHome
+							taxonomy={this.state.taxonomy}
+							{...props} />}
+						/>
 					</Switch>
 				</div>
 			</div>
