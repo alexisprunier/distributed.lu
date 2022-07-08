@@ -34,6 +34,10 @@ export default class PageSearch extends React.Component {
 	componentDidMount() {
 		this.getEntities();
 		this.getArticles();
+
+		if (getUrlParameter("r")) {
+			PageSearch.trackSearch(getUrlParameter("r"));
+		}
 	}
 
 	componentDidUpdate(_, prevState) {
@@ -65,6 +69,20 @@ export default class PageSearch extends React.Component {
 				this.getArticles();
 			});
 		}
+
+		if (prevState.searchValue !== this.state.searchValue && this.state.searchValue) {
+			PageSearch.trackSearch(this.state.searchValue);
+		}
+
+		if (prevState.taxonomyValue !== this.state.taxonomyValue && this.state.taxonomyValue) {
+			PageSearch.trackSearch("taxonomy_value=" + this.state.searchValue);
+		}
+	}
+
+	static trackSearch(k) {
+		// eslint-disable-next-line no-underscore-dangle,no-multi-assign
+		const paq = window._paq = window._paq || [];
+		paq.push(["trackSiteSearch", k]);
 	}
 
 	getEntities() {
@@ -200,7 +218,7 @@ export default class PageSearch extends React.Component {
 				<div className="row">
 					<div className="col-md-12">
 						<Breadcrumb>
-							<Breadcrumb.Item><Link to="/">CYBERSECURITY LUXEMBOURG</Link></Breadcrumb.Item>
+							<Breadcrumb.Item><Link to="/">DISTRIBUTED.LU</Link></Breadcrumb.Item>
 							<Breadcrumb.Item><Link to="/search">SEARCH</Link></Breadcrumb.Item>
 						</Breadcrumb>
 					</div>

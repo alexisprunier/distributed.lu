@@ -127,7 +127,7 @@ export default class PageHome extends React.Component {
 						/>
 					</div>
 					<div className="col-md-7 PageHome-intro">
-						<div>Welcome to the tabloid of the blockchain network in Luxembourg</div>
+						<div>Welcome to the Master Node of the blockchain activity in Luxembourg</div>
 						<br/>
 						<SearchField
 							{...this.props}

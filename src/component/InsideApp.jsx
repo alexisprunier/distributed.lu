@@ -30,13 +30,12 @@ class InsideApp extends React.Component {
 	}
 
 	// eslint-disable-next-line react/no-deprecated
-	componentWillMount() {
+	/* componentWillMount() {
 		this.setState({
 			unlisten: this.props.history.listen((location) => {
 				// eslint-disable-next-line no-multi-assign,no-underscore-dangle
 				const paq = window._paq = window._paq || [];
 				paq.push(["setCustomUrl", location.pathname]);
-				paq.push(["setDocumentTitle", "My New Title"]);
 				paq.push(["trackPageView"]);
 			}),
 		});
@@ -44,7 +43,7 @@ class InsideApp extends React.Component {
 
 	componentWillUnmount() {
 		this.state.unlisten();
-	}
+	} */
 
 	componentDidMount() {
 		this.getTaxonomy();
