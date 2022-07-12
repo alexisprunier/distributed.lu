@@ -46,7 +46,7 @@ export default class PageLegal extends React.Component {
 				taxonomy_values: this.props.taxonomy.taxonomy_values
 					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "EUROPEAN UNION LEGAL FRAMEWORK")
 					.map((v) => v.id),
-				per_page: 4,
+				per_page: 6,
 				page: page || 1,
 			});
 
@@ -73,7 +73,7 @@ export default class PageLegal extends React.Component {
 				taxonomy_values: this.props.taxonomy.taxonomy_values
 					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "NATIONAL LEGAL FRAMEWORK")
 					.map((v) => v.id),
-				per_page: 4,
+				per_page: 6,
 				page: page || 1,
 			});
 
@@ -100,7 +100,7 @@ export default class PageLegal extends React.Component {
 				taxonomy_values: this.props.taxonomy.taxonomy_values
 					.filter((v) => v.category === "TOOL CATEGORY" && v.name === "STANDARD")
 					.map((v) => v.id),
-				per_page: 4,
+				per_page: 6,
 				page: page || 1,
 			});
 
