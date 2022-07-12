@@ -46,16 +46,8 @@ export default class Event extends Component {
 						<p className="card-text">{this.props.info.abstract}</p>
 						<div className={"right-buttons"}>
 							<button className={"blue-background"}>
-								More
+								Know more &gt;&gt;
 							</button>
-							{this.props.info.link !== null
-								&& <button
-									className={"blue-background"}
-									onClick={() => window.open(this.props.info.link, "_blank")}
-								>
-									<i className="fas fa-arrow-alt-circle-right"/> See on source
-								</button>
-							}
 						</div>
 					</div>
 				</div>

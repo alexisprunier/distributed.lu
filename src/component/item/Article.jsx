@@ -34,16 +34,8 @@ export default class Article extends Component {
 							<button
 								className={"blue-background"}
 							>
-								More
+								Read &gt;&gt;
 							</button>
-							{this.props.info.link !== null
-								&& <button
-									className={"blue-background"}
-									onClick={() => window.open(this.props.info.link, "_blank")}
-								>
-									Open source
-								</button>
-							}
 						</div>
 					</div>
 				</div>
