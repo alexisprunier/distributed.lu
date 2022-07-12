@@ -120,18 +120,38 @@ export default class PageHome extends React.Component {
 
 				<div className={"row row-spaced"}>
 					<div className="col-md-1"/>
-					<div className="col-md-3">
+					<div className="col-md-4">
 						<img
 							className="PageHome-lux-image"
 							src="/img/luxembourg-pixelated.svg"
 						/>
 					</div>
-					<div className="col-md-7 PageHome-intro">
+					<div className="col-md-1"/>
+					<div className="col-md-6 PageHome-intro">
 						<div>Welcome to the Master Node of the blockchain activity in Luxembourg</div>
 						<br/>
 						<SearchField
 							{...this.props}
 						/>
+
+						<a
+							href="https://discord.gg/xkBDmE6HQ8"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<div className={"row"}>
+								<div className="col-sm-1"/>
+								<div className="col-sm-6 PageHome-discord-intro">
+									<h3>Come to discuss, share, meet and support each other!</h3>
+								</div>
+								<div className="col-sm-3">
+									<img
+										className="PageHome-lux-image"
+										src="/img/Discord-Logo-Color.svg"
+									/>
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
 

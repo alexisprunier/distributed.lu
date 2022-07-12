@@ -2,6 +2,7 @@
 .PageHome-lux-image {
 	width: 100%;
 	height: 100%;
+    padding: 0px 10px;
 }
 
 .PageHome-top-row {
@@ -15,7 +16,33 @@
 	font-size: 35px;
 	vertical-align: middle;
     line-height: 1;
+    text-align: center;
 }
+
+.PageHome-intro .SearchField {
+    margin-bottom: 20px;
+}
+
+.PageHome-intro a:hover {
+    text-decoration: none;
+}
+
+.PageHome-intro a:hover > div {
+    background-color: rgba(0, 159, 227, 0.1) !important;
+}
+
+.PageHome-intro a:hover h3 {
+    color: #009fe3 !important;
+}
+
+.PageHome-discord-intro {
+    padding: 40px 20px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1;
+}
+
+
 
 .PageHome-see-more {
 	width: 100%;
