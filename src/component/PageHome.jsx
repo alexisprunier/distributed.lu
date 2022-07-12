@@ -105,7 +105,7 @@ export default class PageHome extends React.Component {
 			edges: {
 				color: "#000000",
 			},
-			height: "300px",
+			height: "400px",
 		};
 
 		return (
@@ -207,7 +207,7 @@ export default class PageHome extends React.Component {
 						|| this.props.taxonomy.taxonomy_values
 							.filter((v) => v.category === "ECOSYSTEM ROLE").length === 0)
 						&& <Loading
-							height={300}
+							height={400}
 						/>
 					}
 				</div>
