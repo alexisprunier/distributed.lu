@@ -64,3 +64,18 @@
     left: 10px;
     text-transform: uppercase;
 }
+
+.Event .card-img-top {
+    border-radius: 0px !important;
+    background-image:
+      linear-gradient(45deg, #4a4e54 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #4a4e54 75%),
+      linear-gradient(45deg, transparent 75%, #4a4e54 75%),
+      linear-gradient(45deg, #4a4e54 25%, transparent 25%);
+    background-size:10px 10px;
+    background-position: 0 0, 0 0, -5px -5px, 5px 5px;
+}
+
+.Event .card-img-wrapper img {
+    object-fit: contain;
+}

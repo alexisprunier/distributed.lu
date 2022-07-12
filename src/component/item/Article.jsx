@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Article.css";
-import { Link } from "react-router-dom";
 import NoImage from "../box/NoImage.jsx";
 import { getApiURL } from "../../utils/env.jsx";
 
@@ -14,10 +13,10 @@ export default class Article extends Component {
 
 	render() {
 		return (
-			<Link to={"/news/" + this.props.info.handle} className="Article-link">
+			<a href={this.props.info.link} target="_blank" rel="noreferrer" className="Article-link">
 				<div className="Article card">
 					<div className="card-img-wrapper">
-						{this.props.info.image !== null && this.props.info.image !== undefined
+						{this.props.info.image && this.props.info.image
 							? <img
 								className="card-img-top"
 								src={getApiURL() + "public/get_public_image/" + this.props.info.image}
@@ -26,7 +25,7 @@ export default class Article extends Component {
 								height={250}
 							/>
 						}
-						<div className="card-date">{this.props.info.publication_date}</div>
+						<div className="card-date">{this.props.info.publication_date.split("T")[0]}</div>
 						<div className="card-type">{this.props.info.type}</div>
 					</div>
 					<div className="card-body">
@@ -48,7 +47,7 @@ export default class Article extends Component {
 						</div>
 					</div>
 				</div>
-			</Link>
+			</a>
 		);
 	}
 }

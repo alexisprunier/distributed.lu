@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ArticleSmall.css";
-import { Link } from "react-router-dom";
 
 export default class ArticleSmall extends Component {
 	constructor(props) {
@@ -12,13 +11,13 @@ export default class ArticleSmall extends Component {
 
 	render() {
 		return (
-			<Link to={"/news/" + this.props.info.handle} className="ArticleSmall-link">
+			<a href={this.props.info.link} target="_blank" rel="noreferrer" className="ArticleSmall-link">
 				<div className="ArticleSmall">
 					<div className={"ArticleSmall-name"}>
-						{this.props.info.publication_date} - {this.props.info.title}
+						{this.props.info.publication_date.split("T")[0]} - {this.props.info.title}
 					</div>
 				</div>
-			</Link>
+			</a>
 		);
 	}
 }

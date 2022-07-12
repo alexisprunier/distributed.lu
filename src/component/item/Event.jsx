@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Event.css";
-import { Link } from "react-router-dom";
 import NoImage from "../box/NoImage.jsx";
 import { getApiURL } from "../../utils/env.jsx";
 
@@ -14,7 +13,7 @@ export default class Event extends Component {
 
 	render() {
 		return (
-			<Link to={"/calendar/" + this.props.info.handle} className="Event-link">
+			<a href={this.props.info.link} target="_blank" rel="noreferrer" className="Event-link">
 				<div className="Event card">
 					<div className="card-img-wrapper">
 						{this.props.info.image !== null && this.props.info.image !== undefined
@@ -60,7 +59,7 @@ export default class Event extends Component {
 						</div>
 					</div>
 				</div>
-			</Link>
+			</a>
 		);
 	}
 }
