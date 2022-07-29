@@ -21,7 +21,7 @@ export default class Article extends Component {
 		}
 
 		if (this.props.entities) {
-			for (let i = 0; i++; i < this.props.entities.length) {
+			for (let i = 0; i < this.props.entities.length; i++) {
 				if (this.props.entities[i].image) {
 					return <img
 						className="card-img-top"
