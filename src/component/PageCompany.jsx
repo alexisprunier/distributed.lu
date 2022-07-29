@@ -62,7 +62,7 @@ export default class PageCompany extends React.Component {
 			type,
 			companies: this.props.match.params.id,
 			page: page || 1,
-			per_page: 4,
+			per_page: 6,
 		};
 
 		getRequest.call(this, "public/get_public_articles?"
