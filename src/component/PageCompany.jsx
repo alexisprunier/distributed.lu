@@ -24,6 +24,7 @@ export default class PageCompany extends React.Component {
 			geolocations: null,
 			news: null,
 			events: null,
+			entities: null,
 		};
 	}
 
@@ -69,6 +70,24 @@ export default class PageCompany extends React.Component {
 			+ dictToURI(params), (data) => {
 			this.setState({
 				[variable]: data,
+			}, () => {
+				if (type === "NEWS") {
+					const params2 = dictToURI({
+						ids: [...new Set(data.items
+							.map((a) => a.company_tags)
+							.flat())],
+					});
+
+					getRequest.call(this, "public/get_public_companies?" + params2, (data2) => {
+						this.setState({
+							entities: data2,
+						});
+					}, (response) => {
+						nm.warning(response.statusText);
+					}, (error) => {
+						nm.error(error.message);
+					});
+				}
 			});
 		}, (response) => {
 			nm.warning(response.statusText);
@@ -103,6 +122,11 @@ export default class PageCompany extends React.Component {
 									showImage={true}
 									showDate={true}
 									showType={true}
+									entities={this.state.entities
+										? this.state.entities
+											.filter((e) => a.company_tags.indexOf(e.id) >= 0)
+										: []
+									}
 								/>
 							}
 							{type === "EVENT"

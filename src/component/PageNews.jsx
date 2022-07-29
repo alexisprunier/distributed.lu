@@ -23,6 +23,7 @@ export default class PageNews extends React.Component {
 			page: 1,
 			fastLinkArticles: null,
 			articles: null,
+			entities: null,
 			filters: {
 				type: "NEWS",
 				taxonomy_values: [],
@@ -61,17 +62,35 @@ export default class PageNews extends React.Component {
 	getArticles(page) {
 		this.setState({
 			articles: null,
+			entities: null,
 		});
 
 		const params = dictToURI({
 			per_page: 15,
 			page: page || 1,
+			include_tags: true,
 			...this.state.filters,
 		});
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
 				articles: data,
+			}, () => {
+				const params2 = dictToURI({
+					ids: [...new Set(data.items
+						.map((a) => a.company_tags)
+						.flat())],
+				});
+
+				getRequest.call(this, "public/get_public_companies?" + params2, (data2) => {
+					this.setState({
+						entities: data2,
+					});
+				}, (response) => {
+					nm.warning(response.statusText);
+				}, (error) => {
+					nm.error(error.message);
+				});
 			});
 		}, (response) => {
 			nm.warning(response.statusText);
@@ -169,6 +188,10 @@ export default class PageNews extends React.Component {
 								showImage={true}
 								showDate={true}
 								showType={true}
+								entities={this.state.entities
+									? this.state.entities.filter((e) => a.company_tags.indexOf(e.id) >= 0)
+									: []
+								}
 							/>
 						</div>
 						}

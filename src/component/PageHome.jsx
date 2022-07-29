@@ -21,6 +21,7 @@ export default class PageHome extends React.Component {
 		this.state = {
 			news: null,
 			events: null,
+			entity: null,
 		};
 	}
 
@@ -38,6 +39,22 @@ export default class PageHome extends React.Component {
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {
 			this.setState({
 				news: data,
+			}, () => {
+				const params2 = dictToURI({
+					ids: [...new Set(data.items
+						.map((a) => a.company_tags)
+						.flat())],
+				});
+
+				getRequest.call(this, "public/get_public_companies?" + params2, (data2) => {
+					this.setState({
+						entities: data2,
+					});
+				}, (response) => {
+					nm.warning(response.statusText);
+				}, (error) => {
+					nm.error(error.message);
+				});
 			});
 		}, (response) => {
 			nm.warning(response.statusText);
@@ -172,14 +189,18 @@ export default class PageHome extends React.Component {
 					{this.state.news
 						&& this.state.news.items.length > 0
 						&& this.state.news.items
-							.map((n) => <div
-								key={n.id}
+							.map((a) => <div
+								key={a.id}
 								className="col-md-5">
 								<Article
-									info={n}
+									info={a}
 									showImage={true}
 									showDate={true}
 									showType={true}
+									entities={this.state.entities
+										? this.state.entities.filter((e) => a.company_tags.indexOf(e.id) >= 0)
+										: []
+									}
 								/>
 							</div>)
 					}
