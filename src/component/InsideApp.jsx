@@ -23,7 +23,7 @@ class InsideApp extends React.Component {
 		this.changeState = this.changeState.bind(this);
 
 		this.state = {
-			selectedMenu: "",
+			selectedMenu: window.location.pathname.replace(/\//, ""),
 			taxonomy: null,
 			unlisten: null,
 		};
@@ -72,11 +72,11 @@ class InsideApp extends React.Component {
 	render() {
 		return (
 			<div id="InsideApp">
-				<Menu
+				<Route render={(props) => <Menu
 					selectedMenu={this.state.selectedMenu}
 					changeMenu={(v) => this.changeState("selectedMenu", v)}
-					disconnect={this.props.disconnect}
-				/>
+					{...props}
+				/>}/>
 				<div id="InsideApp-content">
 					<Switch>
 						<Route path="/news/:handle" render={(props) => <PageArticle

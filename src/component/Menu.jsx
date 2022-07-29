@@ -4,29 +4,13 @@ import SideNav, {
 	Toggle, Nav, NavItem, NavIcon, NavText,
 } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import { Link } from "react-router-dom";
 
 export default class Menu extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			notifications: null,
-			myCompanies: null,
 		};
-	}
-
-	getTaskNotificationBlock(url) {
-		if (this.state.notifications === null
-			|| this.state.notifications.new_requests === undefined) {
-			return "";
-		}
-
-		return <Link to={url}>
-			<div className={"Menu-notification"}>
-				{this.state.notifications.new_requests}
-			</div>
-		</Link>;
 	}
 
 	render() {
@@ -45,72 +29,79 @@ export default class Menu extends React.Component {
 				<Nav defaultSelected={this.props.selectedMenu}>
 					<NavItem
 						eventKey=""
-						active={this.props.selectedMenu === ""}>
+						active={this.props.selectedMenu === ""}
+						onClick={() => this.props.history.push("/")}>
 						<NavIcon>
-							<Link to="/"><i className="fa fa-home" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fa fa-home" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/">Home</Link>
+							Home
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="news"
-						active={this.props.selectedMenu === "news"}>
+						active={this.props.selectedMenu === "news"}
+						onClick={() => this.props.history.push("/news")}>
 						<NavIcon>
-							<Link to="/news"><i className="fa fa-newspaper" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fa fa-newspaper" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/news">News</Link>
+							News
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="calendar"
-						active={this.props.selectedMenu === "calendar"}>
+						active={this.props.selectedMenu === "calendar"}
+						onClick={() => this.props.history.push("/calendar")}>
 						<NavIcon>
-							<Link to="/calendar"><i className="fa fa-calendar-alt" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fa fa-calendar-alt" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/calendar">Calendar</Link>
+							Calendar
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="network"
-						active={this.props.selectedMenu === "network"}>
+						active={this.props.selectedMenu === "network"}
+						onClick={() => this.props.history.push("/network")}>
 						<NavIcon>
-							<Link to="/network"><i className="fas fa-project-diagram" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fas fa-project-diagram" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/network">Network</Link>
+							Network
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="legal"
-						active={this.props.selectedMenu === "legal"}>
+						active={this.props.selectedMenu === "legal"}
+						onClick={() => this.props.history.push("/legal")}>
 						<NavIcon>
-							<Link to="/legal"><i className="fas fa-balance-scale" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fas fa-balance-scale" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/legal">Legal framework</Link>
+							Legal framework
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="training"
-						active={this.props.selectedMenu === "training"}>
+						active={this.props.selectedMenu === "training"}
+						onClick={() => this.props.history.push("/training")}>
 						<NavIcon>
-							<Link to="/training"><i className="fas fa-graduation-cap" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fas fa-graduation-cap" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/training">Training</Link>
+							Training
 						</NavText>
 					</NavItem>
 					<NavItem
 						eventKey="search"
-						active={this.props.selectedMenu === "search"}>
+						active={this.props.selectedMenu === "search"}
+						onClick={() => this.props.history.push("/search")}>
 						<NavIcon>
-							<Link to="/search"><i className="fas fa-search" style={{ fontSize: "1.75em" }}/></Link>
+							<i className="fas fa-search" style={{ fontSize: "1.75em" }}/>
 						</NavIcon>
 						<NavText>
-							<Link to="/search">Search</Link>
+							Search
 						</NavText>
 					</NavItem>
 
