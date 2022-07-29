@@ -34,6 +34,7 @@ export default class PageHome extends React.Component {
 		const params = dictToURI({
 			per_page: 2,
 			type: "NEWS",
+			include_tags: true,
 		});
 
 		getRequest.call(this, "public/get_public_articles?" + params, (data) => {

@@ -62,6 +62,7 @@ export default class PageCompany extends React.Component {
 		const params = {
 			type,
 			companies: this.props.match.params.id,
+			include_tags: true,
 			page: page || 1,
 			per_page: 6,
 		};
