@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Loading from "./box/Loading.jsx";
 import Message from "./box/Message.jsx";
 import Article from "./item/Article.jsx";
-import Event from "./item/Event.jsx";
 import SearchField from "./form/SearchField.jsx";
 import { getRequest } from "../utils/request.jsx";
 import { dictToURI } from "../utils/url.jsx";
@@ -178,6 +177,9 @@ export default class PageHome extends React.Component {
 								className="col-md-5">
 								<Article
 									info={n}
+									showImage={true}
+									showDate={true}
+									showType={true}
 								/>
 							</div>)
 					}
@@ -189,6 +191,7 @@ export default class PageHome extends React.Component {
 							className="col-md-2">
 							<Link to="/news">
 								<div className="PageHome-see-more">
+									<i className="fas fa-angle-double-right"/>
 									See more
 								</div>
 							</Link>
@@ -253,8 +256,11 @@ export default class PageHome extends React.Component {
 							.map((e) => <div
 								key={e.id}
 								className="col-md-5">
-								<Event
+								<Article
 									info={e}
+									showImage={true}
+									showTime={true}
+									showType={true}
 								/>
 							</div>)
 					}
@@ -266,6 +272,7 @@ export default class PageHome extends React.Component {
 							className="col-md-2">
 							<Link to="/calendar">
 								<div className="PageHome-see-more">
+									<i className="fas fa-angle-double-right"/>
 									See more
 								</div>
 							</Link>

@@ -14,7 +14,6 @@ import CompanyMap from "./map/CompanyMap.jsx";
 import Tab from "./tab/Tab.jsx";
 import Chip from "./form/Chip.jsx";
 import Article from "./item/Article.jsx";
-import Event from "./item/Event.jsx";
 
 export default class PageCompany extends React.Component {
 	constructor(props) {
@@ -101,13 +100,17 @@ export default class PageCompany extends React.Component {
 							{type === "NEWS"
 								&& <Article
 									info={a}
-									taxonomy={this.props.taxonomy}
+									showImage={true}
+									showDate={true}
+									showType={true}
 								/>
 							}
 							{type === "EVENT"
-								&& <Event
+								&& <Article
 									info={a}
-									taxonomy={this.props.taxonomy}
+									showImage={true}
+									showTime={true}
+									showType={true}
 								/>
 							}
 						</div>
@@ -134,6 +137,7 @@ export default class PageCompany extends React.Component {
 	getTaxonomyCategories() {
 		if (this.props.taxonomy
 			&& this.state.company
+			&& this.state.company.taxonomy_assignment
 			&& this.state.company.taxonomy_assignment.length > 0) {
 			const values = this.props.taxonomy.taxonomy_values
 				.filter((v) => this.state.company.taxonomy_assignment.indexOf(v.id) >= 0);
@@ -290,6 +294,7 @@ export default class PageCompany extends React.Component {
 
 				{this.props.taxonomy
 					&& this.state.company
+					&& this.state.company.taxonomy_assignment
 					&& this.state.company.taxonomy_assignment.length > 0
 					&& <div className="row row-spaced">
 						<div className="col-md-12">

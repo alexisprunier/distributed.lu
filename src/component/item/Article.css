@@ -43,10 +43,10 @@
 
 .Article .card-date {
     position: absolute;
-    background: #009fe3;
+    background: #26282b;
     text-align: center;
     padding: 10px;
-    color: #fff;
+    color: #009fe3;
     bottom: 0;
     right: 10px;
     text-transform: uppercase;
@@ -54,10 +54,10 @@
 
 .Article .card-type {
     position: absolute;
-    background: #e40613;
+    background: #26282b;
     text-align: center;
     padding: 10px;
-    color: #fff;
+    color: #e40613;
     top: 0;
     left: 10px;
     text-transform: uppercase;

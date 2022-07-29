@@ -157,6 +157,8 @@ export default class PageLegal extends React.Component {
 						buildElement={(a) => <div className="col-md-4">
 							<Article
 								info={a}
+								showImage={true}
+								showType={true}
 							/>
 						</div>
 						}
@@ -198,6 +200,8 @@ export default class PageLegal extends React.Component {
 						buildElement={(a) => <div className="col-md-4">
 							<Article
 								info={a}
+								showImage={true}
+								showType={true}
 							/>
 						</div>
 						}
@@ -239,6 +243,8 @@ export default class PageLegal extends React.Component {
 						buildElement={(a) => <div className="col-md-4">
 							<Article
 								info={a}
+								showImage={true}
+								showType={true}
 							/>
 						</div>
 						}

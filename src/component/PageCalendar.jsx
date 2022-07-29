@@ -7,7 +7,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import Loading from "./box/Loading.jsx";
 import { getRequest } from "../utils/request.jsx";
-import Event from "./item/Event.jsx";
+import Article from "./item/Article.jsx";
 import Message from "./box/Message.jsx";
 import { dictToURI } from "../utils/url.jsx";
 import Table from "./table/Table.jsx";
@@ -114,8 +114,11 @@ export default class PageCalendar extends React.Component {
 						}
 						buildElement={(a) => (
 							<div className="col-md-4">
-								<Event
+								<Article
 									info={a}
+									showImage={true}
+									showTime={true}
+									showType={true}
 								/>
 							</div>
 						)}

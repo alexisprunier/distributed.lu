@@ -166,6 +166,9 @@ export default class PageNews extends React.Component {
 						buildElement={(a) => <div className="col-md-4">
 							<Article
 								info={a}
+								showImage={true}
+								showDate={true}
+								showType={true}
 							/>
 						</div>
 						}

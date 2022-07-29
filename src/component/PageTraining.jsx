@@ -94,6 +94,8 @@ export default class PageTraining extends React.Component {
 							<div className="col-md-6" key={t.id}>
 								<Article
 									info={t}
+									showImage={true}
+									showType={true}
 								/>
 							</div>
 						))
