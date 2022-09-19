@@ -79,7 +79,7 @@ export default class PageCompany extends React.Component {
 							.flat())],
 					});
 
-					getRequest.call(this, "public/get_public_companies?" + params2, (data2) => {
+					getRequest.call(this, "public/get_public_entities?" + params2, (data2) => {
 						this.setState({
 							entities: data2,
 						});

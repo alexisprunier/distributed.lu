@@ -92,7 +92,7 @@ export default class PageSearch extends React.Component {
 				? { name: this.state.searchValue }
 				: { taxonomy_values: this.state.taxonomyValue };
 
-			getRequest.call(this, "public/get_public_companies?"
+			getRequest.call(this, "public/get_public_entities?"
 				+ dictToURI(filters), (data) => {
 				this.setState({
 					entities: data,

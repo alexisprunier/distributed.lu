@@ -33,7 +33,7 @@ export default class PageNetwork extends React.Component {
 			companies: null,
 		});
 
-		getRequest.call(this, "public/get_public_companies", (data) => {
+		getRequest.call(this, "public/get_public_entities", (data) => {
 			this.setState({
 				companies: data,
 			});
