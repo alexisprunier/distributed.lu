@@ -36,7 +36,7 @@ export default class CompanyMap extends React.Component {
 						? this.props.geolocations
 							.filter((a) => a.latitude !== null && a.longitude !== null)
 							.map((a) => (
-								<div key={a.company_id}>
+								<div key={a.entity_id}>
 									<Marker
 										position={[a.latitude, a.longitude]}
 										icon={thisIcon}

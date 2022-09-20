@@ -35,12 +35,12 @@ export default class PageCompany extends React.Component {
 	}
 
 	getCompanyContent() {
-		getRequest.call(this, "public/get_public_company/"
+		getRequest.call(this, "public/get_public_entity/"
 			+ this.props.match.params.id, (data) => {
 			this.setState({
 				company: data,
 			}, () => {
-				getRequest.call(this, "public/get_public_company_geolocations?ids="
+				getRequest.call(this, "public/get_public_entity_geolocations?ids="
 					+ this.props.match.params.id, (data2) => {
 					this.setState({
 						geolocations: data2,
@@ -61,7 +61,7 @@ export default class PageCompany extends React.Component {
 	getCompanyArticle(type, variable, page) {
 		const params = {
 			type,
-			companies: this.props.match.params.id,
+			entities: this.props.match.params.id,
 			include_tags: true,
 			page: page || 1,
 			per_page: 6,
@@ -75,7 +75,7 @@ export default class PageCompany extends React.Component {
 				if (type === "NEWS") {
 					const params2 = dictToURI({
 						ids: [...new Set(data.items
-							.map((a) => a.company_tags)
+							.map((a) => a.entity_tags)
 							.flat())],
 					});
 
@@ -125,7 +125,7 @@ export default class PageCompany extends React.Component {
 									showType={true}
 									entities={this.state.entities
 										? this.state.entities
-											.filter((e) => a.company_tags.indexOf(e.id) >= 0)
+											.filter((e) => a.entity_tags.indexOf(e.id) >= 0)
 										: []
 									}
 								/>

@@ -78,7 +78,7 @@ export default class PageNews extends React.Component {
 			}, () => {
 				const params2 = dictToURI({
 					ids: [...new Set(data.items
-						.map((a) => a.company_tags)
+						.map((a) => a.entity_tags)
 						.flat())],
 				});
 
@@ -189,7 +189,7 @@ export default class PageNews extends React.Component {
 								showDate={true}
 								showType={true}
 								entities={this.state.entities
-									? this.state.entities.filter((e) => a.company_tags.indexOf(e.id) >= 0)
+									? this.state.entities.filter((e) => a.entity_tags.indexOf(e.id) >= 0)
 									: []
 								}
 							/>

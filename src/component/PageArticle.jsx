@@ -114,8 +114,8 @@ export default class PageArticle extends React.Component {
 								</div>
 
 								<div className="PageArticle-companies">
-									{this.state.article.companies !== undefined
-										&& this.state.article.companies.map((t) => (
+									{this.state.article.entities !== undefined
+										&& this.state.article.entities.map((t) => (
 											<Chip
 												key={t.name}
 												label={t.name}
@@ -176,8 +176,8 @@ export default class PageArticle extends React.Component {
 								</div>
 
 								<div className="PageArticle-companies">
-									{this.state.article.companies !== undefined
-										&& this.state.article.companies.map((t) => (
+									{this.state.article.entities !== undefined
+										&& this.state.article.entities.map((t) => (
 											<Chip
 												key={t.name}
 												label={t.name}
