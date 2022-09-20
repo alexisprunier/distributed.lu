@@ -92,7 +92,7 @@ export default class PageNetwork extends React.Component {
 		const ecosystemRoleValueIds = roleNodes.map((n) => (n.id));
 
 		const companyNodes = this.props.taxonomy.taxonomy_assignments
-			.filter((a) => ecosystemRoleValueIds.indexOf(a.taxonomy_value) >= 0)
+			.filter((a) => ecosystemRoleValueIds.indexOf(a.taxonomy_value_id) >= 0)
 			.map((a, i) => ({
 				id: 1000000 + i,
 				label: this.state.companies.filter((c) => c.id === a.entity_id)[0].name,
