@@ -129,19 +129,19 @@ export default class PageHome extends React.Component {
 			<div className={"page small-max-sized-page row-spaced"}>
 				<div className={"row row-spaced"}>
 					<div className="col-md-12 PageHome-top-row">
-						<span style={{ color: "#00A3E0" }}>DISTRIBUTED</span>
-						<span style={{ color: "white" }}>.</span>
-						<span style={{ color: "#EF3340" }}>lu</span>
+						<img className={"PageHome-logo"}/>
 					</div>
 				</div>
 
 				<div className={"row row-spaced"}>
 					<div className="col-md-1"/>
 					<div className="col-md-4">
-						<img
-							className="PageHome-lux-image"
-							src="/img/luxembourg-pixelated.svg"
-						/>
+						<div className="PageHome-lux-image-wrapper">
+							<img
+								className="PageHome-lux-image"
+								src="/img/luxembourg-pixelated.svg"
+							/>
+						</div>
 					</div>
 					<div className="col-md-1"/>
 					<div className="col-md-6 PageHome-intro">
@@ -162,10 +162,12 @@ export default class PageHome extends React.Component {
 									<h3>Come to discuss, share, meet and support each other!</h3>
 								</div>
 								<div className="col-sm-3">
-									<img
-										className="PageHome-lux-image"
-										src="/img/Discord-Logo-Color.svg"
-									/>
+									<div className="PageHome-discord-image-wrapper">
+										<img
+											className="PageHome-discord-image"
+											src="/img/Discord-Logo-Color.svg"
+										/>
+									</div>
 								</div>
 							</div>
 						</a>

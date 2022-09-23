@@ -1,14 +1,32 @@
 
+@media (max-width: 767px) {
+    .PageHome-logo {
+        content: url('../img/distributed short wo bg.png');
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 768px) {
+    .PageHome-logo {
+        content: url('../img/distributed wo bg.png');
+        max-width: 600px;
+    }
+}
+
+.PageHome-lux-image-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
 .PageHome-lux-image {
 	width: 100%;
-	height: 100%;
-    padding: 0px 10px;
+	height: auto;
 }
 
 .PageHome-top-row {
+    text-align: center;
 	margin: 40px 0px 20px 0px;
-    font-size: 70px;
-    font-family: "mkzodsqu", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .PageHome-intro {
@@ -42,7 +60,18 @@
     line-height: 1;
 }
 
+.PageHome-discord-image-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
+.PageHome-discord-image {
+    margin: auto;
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+}
 
 .PageHome-see-more {
 	width: 100%;
